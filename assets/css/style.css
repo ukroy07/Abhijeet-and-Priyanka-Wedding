@@ -777,6 +777,21 @@ a { color: inherit; }
 .footer p { margin: 8px 0 0; font-style: italic; font-size: 17px; }
 .footer .deva { margin: 0; font-style: normal; font-size: 21px; color: var(--gold-soft); }
 
+.footer .credit { position: relative; display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin-top: 26px; padding-top: 18px; font-size: 15px; color: rgba(246, 231, 181, .6); }
+.credit::before { content: ''; position: absolute; top: 0; left: 50%; width: 72px; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 203, 138, .55), transparent); transform: translateX(-50%); }
+.credit__heart { font-style: normal; color: #E2475E; animation: beat 1.8s ease-in-out infinite; }
+.credit__link { display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px 3px 7px; border-radius: 999px; font-family: var(--serif); font-style: normal; font-weight: 600; font-size: 16.5px; letter-spacing: .03em; color: var(--gold-pale); text-decoration: none; transition: background .3s ease, color .3s ease, transform .3s var(--ease); }
+.credit__ig { width: 18px; height: 18px; flex: none; overflow: visible; transition: transform .35s var(--ease); }
+.credit__ig g { fill: none; stroke-width: 1.7; transition: opacity .3s ease; }
+.credit__ig-line { stroke: var(--gold-soft); }
+.credit__ig-line .dot { fill: var(--gold-soft); stroke: none; }
+.credit__ig-color { stroke: url(#igGrad); opacity: 0; }
+.credit__ig-color .dot { fill: url(#igGrad); stroke: none; }
+.credit__link:hover, .credit__link:focus-visible { background: rgba(255, 240, 200, .08); color: #fff; }
+.credit__link:hover .credit__ig, .credit__link:focus-visible .credit__ig { transform: scale(1.18) rotate(-6deg); }
+.credit__link:hover .credit__ig-color, .credit__link:focus-visible .credit__ig-color { opacity: 1; }
+.credit__link:hover .credit__ig-line, .credit__link:focus-visible .credit__ig-line { opacity: 0; }
+
 /* ==========================================================================
    Reduced motion
    ========================================================================== */
