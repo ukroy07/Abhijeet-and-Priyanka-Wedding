@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Guest Links · Abhijeet & Priyanka</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#4A0812">
+  <meta name="color-scheme" content="only light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Pinyon+Script&display=swap">
+  <style>
+    :root {
+      --ivory: #FBF7EF; --cream: #F2E7D0; --gold: #C49A45; --gold-deep: #9C7428; --gold-pale: #F6E7B5;
+      --maroon: #6B0F1E; --wine: #2A040B; --ink: #3B1E17; --ink-soft: #6E5144; --green: #1E8C4C;
+      --line: rgba(196, 154, 69, .38);
+    }
+    * { box-sizing: border-box; }
+    html { color-scheme: only light; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--ink);
+      font: 500 18px/1.5 'Cormorant Garamond', Georgia, serif;
+      background: radial-gradient(120% 60% at 50% 0%, #FFFDF7, var(--ivory) 55%, var(--cream));
+    }
+    header {
+      padding: 44px 20px 40px; text-align: center; color: var(--gold-pale);
+      background: radial-gradient(120% 120% at 50% 0%, #84182B, #4A0812 60%, #2A040B);
+    }
+    header .names { margin: 0; font: 400 clamp(40px, 11vw, 58px)/1.1 'Pinyon Script', cursive; color: #EBD08F; }
+    header h1 { margin: 6px 0 0; font: 600 13px/1 'Cinzel', serif; letter-spacing: .34em; text-transform: uppercase; }
+    header p { max-width: 34ch; margin: 12px auto 0; font-style: italic; color: rgba(246, 231, 181, .82); }
+    main { max-width: 760px; margin: -18px auto 0; padding: 0 16px 80px; display: grid; gap: 18px; }
+    .card { padding: 22px 18px; border: 1px solid var(--line); border-radius: 18px; background: #FFFDF8; box-shadow: 0 20px 40px -30px rgba(80, 30, 10, .5); }
+    .card h2 { margin: 0 0 4px; font: 600 12px/1.4 'Cinzel', serif; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-deep); }
+    .hint { margin: 0 0 12px; font-size: 16px; color: var(--ink-soft); }
+    .warn { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; font-size: 15.5px; background: #FFF1E0; color: #8A3B00; }
+    input, textarea {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px;
+      font: 500 17px/1.45 'Cormorant Garamond', Georgia, serif; color: var(--ink); background: #FFFEFB;
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    input:focus, textarea:focus { outline: 2px solid rgba(196, 154, 69, .5); outline-offset: 1px; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 42px; padding: 0 18px;
+      border: 0; border-radius: 999px; cursor: pointer; text-decoration: none; white-space: nowrap;
+      font: 600 11.5px/1 'Cinzel', serif; letter-spacing: .14em; text-transform: uppercase;
+      background: var(--maroon); color: var(--gold-pale);
+    }
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .btn--gold { background: linear-gradient(135deg, #F8EBBE, #D2A955 42%, #EED79A 68%, #B08437); color: #3A0710; }
+    .btn--wa { background: var(--green); color: #fff; }
+    .btn--ghost { background: transparent; color: var(--maroon); border: 1px solid var(--line); }
+    .btn--sm { min-height: 36px; padding: 0 13px; font-size: 10.5px; }
+    .btn:active { transform: scale(.97); }
+    .link { margin: 0; padding: 10px 12px; border-radius: 10px; background: #F7EFE0; font: 500 14.5px/1.4 ui-monospace, Consolas, monospace; color: var(--ink-soft); overflow-wrap: anywhere; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+    .count { font-style: italic; color: var(--ink-soft); }
+    .count b { font-style: normal; color: var(--maroon); }
+    #search { max-width: 260px; }
+    .guests { display: grid; gap: 12px; margin-top: 14px; }
+    .guest { padding: 14px 14px 12px; border: 1px solid var(--line); border-radius: 14px; background: #FFFEFB; }
+    .guest.is-sent { background: #F6FBF6; border-color: rgba(30, 140, 76, .35); }
+    .guest__top { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; }
+    .guest__name { margin: 0; font: 600 21px/1.25 'Cormorant Garamond', serif; color: var(--maroon); overflow-wrap: anywhere; }
+    .guest__phone { font-size: 15px; color: var(--ink-soft); }
+    .chip { flex: none; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; background: none; font: 600 10px/1.2 'Cinzel', serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+    .is-sent .chip { border-color: var(--green); color: var(--green); }
+    .guest .link { margin-top: 8px; font-size: 13px; }
+    .guest .row { margin-top: 10px; gap: 8px; }
+    .empty { margin: 14px 0 0; text-align: center; font-style: italic; color: var(--ink-soft); }
+    .toast { position: fixed; left: 50%; bottom: 24px; padding: 10px 18px; border-radius: 999px; background: rgba(42, 4, 11, .92); color: var(--gold-pale); font-style: italic; transform: translate(-50%, 20px); opacity: 0; transition: .35s ease; pointer-events: none; }
+    .toast.is-in { opacity: 1; transform: translate(-50%, 0); }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="names">Abhijeet &amp; Priyanka</p>
+    <h1>Guest Links</h1>
+    <p>Every guest or family gets their own link — their name appears on the envelope when they open it.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Invitation address</h2>
+      <p class="hint">Where the invitation is hosted. Links are built from this address.</p>
+      <input id="base" type="url" inputmode="url" spellcheck="false" autocomplete="off">
+      <p class="warn" id="baseWarn" hidden>This is a preview address on this computer, so guests won’t be able to open it. Paste the hosted address here once the invitation is online.</p>
+      <div class="row">
+        <p class="link" id="generalLink" style="flex:1 1 260px"></p>
+        <button class="btn btn--ghost btn--sm" id="copyGeneral" type="button">Copy general link</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Add guests</h2>
+      <p class="hint">One per line. Add a WhatsApp number after a comma to send straight to them.</p>
+      <textarea id="newGuests" placeholder="Sharma Ji &amp; Family, 98765 43210&#10;Rohit Bhaiya&#10;Mr. &amp; Mrs. Verma, 91234 56780"></textarea>
+      <div class="row"><button class="btn btn--gold" id="addGuests" type="button">Add to list</button></div>
+    </section>
+
+    <section class="card">
+      <h2>WhatsApp message</h2>
+      <p class="hint"><b>{name}</b> and <b>{link}</b> are filled in for each guest.</p>
+      <textarea id="template" rows="11"></textarea>
+      <div class="row"><button class="btn btn--ghost btn--sm" id="resetTemplate" type="button">Reset message</button></div>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <h2 style="margin:0">Guest list</h2>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="row">
+        <input id="search" type="search" placeholder="Search guests" autocomplete="off">
+      </div>
+      <div class="guests" id="list"></div>
+      <p class="empty" id="empty">No guests yet — add a few above.</p>
+      <div class="row" id="bulk">
+        <button class="btn btn--ghost btn--sm" id="copyAll" type="button">Copy all links</button>
+        <button class="btn btn--ghost btn--sm" id="csv" type="button">Download CSV</button>
+        <button class="btn btn--ghost btn--sm" id="clearAll" type="button">Clear list</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+  (() => {
+    'use strict';
+    const $ = s => document.querySelector(s);
+    const KEY = 'ap-guest-links-v1';
+    const DEFAULT_TEMPLATE = [
+      '🙏 Namaste {name},',
+      '',
+      'With the blessings of our elders, we joyfully invite you to the wedding celebrations of',
+      '',
+      '✨ Abhijeet ♥ Priyanka ✨',
+      '19 – 23 November 2026 · Ranchi & Bokaro Steel City',
+      '',
+      'Your personal invitation 💌',
+      '{link}',
+      '',
+      'Your presence will make our celebration complete.'
+    ].join('\n');
+    const WA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>';
+
+    const defaultBase = location.protocol.startsWith('http') ? new URL('./', location.href).href : '';
+    let state = { base: defaultBase, template: DEFAULT_TEMPLATE, guests: [] };
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved) state = { ...state, ...saved };
+    } catch (e) { /* storage unavailable */ }
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* ignore */ } };
+
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const isLocal = b => !/^https?:\/\//i.test(b) || /^https?:\/\/(localhost|127\.|\[::1\]|0\.0\.0\.0)/i.test(b);
+
+    function linkFor(name) {
+      const base = (state.base || '').trim();
+      try {
+        const u = new URL(base);
+        if (name) u.searchParams.set('to', name); else u.searchParams.delete('to');
+        return u.href;
+      } catch (e) {
+        return name ? `${base}?to=${encodeURIComponent(name)}` : base;
+      }
+    }
+    function phoneFor(p) {
+      let d = String(p || '').replace(/\D/g, '');
+      if (d.length === 10) d = '91' + d;
+      else if (d.length === 11 && d[0] === '0') d = '91' + d.slice(1);
+      return d;
+    }
+    const messageFor = g => state.template.replaceAll('{name}', g.name).replaceAll('{link}', linkFor(g.name));
+    const waFor = g => `https://wa.me/${phoneFor(g.phone)}?text=${encodeURIComponent(messageFor(g))}`;
+
+    function toast(msg) {
+      const t = $('#toast');
+      t.textContent = msg;
+      t.classList.add('is-in');
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(() => t.classList.remove('is-in'), 1800);
+    }
+    async function copy(text, msg) {
+      try { await navigator.clipboard.writeText(text); }
+      catch (e) {
+        const ta = Object.assign(document.createElement('textarea'), { value: text });
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      }
+      toast(msg || 'Copied');
+    }
+
+    function parseLine(line) {
+      const parts = line.split(/\t|,(?=[^,]*$)/);
+      if (parts.length > 1) {
+        const maybe = parts[parts.length - 1].trim();
+        if (/^[+\d][\d\s()-]{6,}$/.test(maybe)) return { name: parts.slice(0, -1).join(',').trim(), phone: maybe };
+      }
+      return { name: line.trim(), phone: '' };
+    }
+
+    function render() {
+      $('#base').value = state.base;
+      $('#baseWarn').hidden = !isLocal(state.base);
+      $('#generalLink').textContent = linkFor('') || '—';
+      if ($('#template').value !== state.template) $('#template').value = state.template;
+      const q = $('#search').value.trim().toLowerCase();
+      const shown = state.guests.filter(g => !q || g.name.toLowerCase().includes(q) || (g.phone || '').includes(q));
+      $('#list').innerHTML = shown.map(g => `
+        <article class="guest${g.sent ? ' is-sent' : ''}" data-id="${g.id}">
+          <div class="guest__top">
+            <div><p class="guest__name">${esc(g.name)}</p>${g.phone ? `<span class="guest__phone">+${esc(phoneFor(g.phone))}</span>` : ''}</div>
+            <button class="chip" type="button" data-act="sent">${g.sent ? 'Sent ✓' : 'Not sent'}</button>
+          </div>
+          <p class="link">${esc(linkFor(g.name))}</p>
+          <div class="row">
+            <a class="btn btn--wa btn--sm" data-act="wa" href="${esc(waFor(g))}" target="_blank" rel="noopener">${WA}WhatsApp</a>
+            <button class="btn btn--ghost btn--sm" type="button" data-act="copy">Copy link</button>
+            <button class="btn btn--ghost btn--sm" type="button" data-act="msg">Copy message</button>
+            <a class="btn btn--ghost btn--sm" href="${esc(linkFor(g.name))}" target="_blank" rel="noopener">Preview</a>
+            <button class="btn btn--ghost btn--sm" type="button" data-act="del" aria-label="Remove ${esc(g.name)}">✕</button>
+          </div>
+        </article>`).join('');
+      const sent = state.guests.filter(g => g.sent).length;
+      $('#count').innerHTML = state.guests.length ? `<b>${state.guests.length}</b> guests · <b>${sent}</b> sent` : '';
+      $('#empty').hidden = state.guests.length > 0;
+      $('#bulk').hidden = state.guests.length === 0;
+    }
+
+    $('#base').addEventListener('input', e => { state.base = e.target.value.trim(); save(); render(); });
+    $('#template').addEventListener('input', e => { state.template = e.target.value; save(); render(); });
+    $('#resetTemplate').addEventListener('click', () => { state.template = DEFAULT_TEMPLATE; save(); render(); });
+    $('#search').addEventListener('input', render);
+    $('#copyGeneral').addEventListener('click', () => copy(linkFor(''), 'General link copied'));
+
+    $('#addGuests').addEventListener('click', () => {
+      const lines = $('#newGuests').value.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const have = new Set(state.guests.map(g => g.name.toLowerCase()));
+      let added = 0;
+      lines.forEach(line => {
+        const g = parseLine(line);
+        if (!g.name || have.has(g.name.toLowerCase())) return;
+        have.add(g.name.toLowerCase());
+        state.guests.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), name: g.name.slice(0, 80), phone: g.phone, sent: false });
+        added++;
+      });
+      $('#newGuests').value = '';
+      save(); render();
+      toast(added ? `${added} guest${added > 1 ? 's' : ''} added` : 'Nothing new to add');
+    });
+
+    $('#list').addEventListener('click', e => {
+      const btn = e.target.closest('[data-act]');
+      if (!btn) return;
+      const id = btn.closest('.guest').dataset.id;
+      const g = state.guests.find(x => x.id === id);
+      if (!g) return;
+      const act = btn.dataset.act;
+      if (act === 'wa') { g.sent = true; save(); setTimeout(render, 300); }
+      if (act === 'sent') { g.sent = !g.sent; save(); render(); }
+      if (act === 'copy') copy(linkFor(g.name), 'Link copied');
+      if (act === 'msg') copy(messageFor(g), 'Message copied');
+      if (act === 'del' && confirm(`Remove ${g.name}?`)) { state.guests = state.guests.filter(x => x.id !== id); save(); render(); }
+    });
+
+    $('#copyAll').addEventListener('click', () => copy(state.guests.map(g => `${g.name} — ${linkFor(g.name)}`).join('\n'), 'All links copied'));
+    $('#csv').addEventListener('click', () => {
+      const cell = v => `"${String(v).replace(/"/g, '""')}"`;
+      const rows = [['Name', 'WhatsApp', 'Link', 'Sent'], ...state.guests.map(g => [g.name, g.phone ? '+' + phoneFor(g.phone) : '', linkFor(g.name), g.sent ? 'yes' : 'no'])];
+      const blob = new Blob(['﻿' + rows.map(r => r.map(cell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+      const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'guest-links.csv' });
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+    $('#clearAll').addEventListener('click', () => {
+      if (!confirm('Remove every guest from this list?')) return;
+      state.guests = []; save(); render();
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
