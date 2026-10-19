@@ -55,29 +55,30 @@ window.INVITE = {
 
   events: [
     {
-      id: 'lagan', theme: 'lagan', date: '2026-11-19', day: 'Thursday',
-      title: 'Shubh Lagan', hi: 'शुभ लगन',
-      tagline: 'The auspicious beginning',
+      id: 'lagan-haldi', theme: 'marigold', date: '2026-11-19', day: 'Thursday',
+      title: 'Shubh Lagan · Haldi · Mehndi · Sangeet', hi: 'शुभ लगन · हल्दी · मेहंदी · संगीत',
+      parts: ['Shubh Lagan', 'Haldi', 'Mehndi', 'Sangeet'],
+      short: 'Lagan · Haldi · Mehndi · Sangeet',
+      tagline: 'An auspicious day of turmeric, henna & music',
+      place: 'Ranchi, Jharkhand', time: '',
+      particles: ['marigold', 'rose', 'leaf']
+    },
+    {
+      id: 'mandap', theme: 'ivory', date: '2026-11-20', day: 'Friday',
+      title: 'Mandapachhadan', hi: 'मण्डपाच्छादन',
+      tagline: 'Raising the sacred wedding mandap',
       place: 'Ranchi, Jharkhand', time: '',
       particles: ['rose', 'marigold']
     },
     {
-      id: 'haldi', theme: 'haldi', date: '2026-11-20', day: 'Friday',
-      title: 'Haldi · Mehndi · Sangeet', hi: 'हल्दी · मेहंदी · संगीत',
-      parts: ['Haldi', 'Mehndi', 'Sangeet'],
-      tagline: 'Turmeric, henna & a night of music',
-      place: 'Ranchi, Jharkhand', time: '',
-      particles: ['marigold', 'leaf']
-    },
-    {
-      id: 'vivah', theme: 'vivah', date: '2026-11-21', day: 'Saturday',
+      id: 'vivah', theme: 'royal', date: '2026-11-21', day: 'Saturday',
       title: 'Baraat', sub: '& Shubh Vivah', hi: 'बारात · शुभ विवाह',
       tagline: 'The procession, the pheras, the promise',
       venue: 'bokaro', time: '',
       particles: ['rose', 'gold']
     },
     {
-      id: 'reception', theme: 'reception', date: '2026-11-23', day: 'Monday',
+      id: 'reception', theme: 'midnight', date: '2026-11-23', day: 'Monday',
       title: 'Reception', hi: 'प्रीतिभोज',
       tagline: 'An evening of love, laughter & blessings',
       venue: 'ranchi', time: '',

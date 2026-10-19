@@ -90,25 +90,30 @@
     $('#dateChips').innerHTML = C.events.map(ev => {
       const { m, d } = parts(ev);
       return `<a class="date-chip date-chip--${ev.theme}" href="#ev-${ev.id}">
-        <b>${d}</b><span>${MON[m - 1]}</span><em>${esc(ev.parts ? ev.parts.join(' · ') : ev.title)}</em></a>`;
+        <b>${d}</b><span>${MON[m - 1]}</span><em>${esc(ev.short || (ev.parts ? ev.parts.join(' · ') : ev.title))}</em></a>`;
     }).join('');
   }
 
+  // Bottom colour of each event theme, so the next page's lace edge matches it
+  const THEME_BOTTOM = { ivory: '#F1DDBE', marigold: '#EF9C1D', royal: '#3A0610', midnight: '#0E182D' };
+  const slug = s => s.toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, '');
+
   function renderEvents() {
-    $('#events').innerHTML = C.events.map(ev => {
+    $('#events').innerHTML = C.events.map((ev, i) => {
       const { m, d, v } = parts(ev);
+      const prev = i ? THEME_BOTTOM[C.events[i - 1].theme] : '#F2E7D0';
       const title = ev.parts
-        ? ev.parts.map((p, k) => `<span class="part part--${k}">${esc(p)}</span>`).join('')
+        ? ev.parts.map(p => `<span class="part part--${slug(p)}">${esc(p)}</span>`).join('')
         : esc(ev.title);
       const where = v
         ? `<b>${esc(v.name)}</b>${v.alias ? `<em>${esc(v.alias)}</em>` : ''}<span>${esc(v.address)}</span>`
         : `<b>${esc(ev.place)}</b>`;
-      return `<section class="event event--${ev.theme}" id="ev-${ev.id}" data-particles="${(ev.particles || []).join(',')}">
+      return `<section class="event event--${ev.theme}" id="ev-${ev.id}" style="--ev-prev:${prev}" data-particles="${(ev.particles || []).join(',')}">
         <div class="event__inner" data-reveal>
           <p class="eyebrow event__day">${esc(ev.day)}</p>
           <div class="emblem">${Art.rangoli()}<div class="emblem__date"><b>${d}</b><span>${MON[m - 1]}</span></div></div>
           <p class="event__hi deva">${esc(ev.hi)}</p>
-          <h3 class="event__title${ev.parts ? ' event__title--parts' : ''}">${title}${ev.sub ? `<span class="event__sub">${esc(ev.sub)}</span>` : ''}</h3>
+          <h3 class="event__title${ev.parts ? ' event__title--parts' : ev.title.length > 12 ? ' event__title--long' : ''}">${title}${ev.sub ? `<span class="event__sub">${esc(ev.sub)}</span>` : ''}</h3>
           <p class="event__tag">${esc(ev.tagline)}</p>
           ${ev.time ? `<p class="event__time">${esc(ev.time)}</p>` : ''}
           <div class="event__place">${ICON.pin}<p>${where}</p></div>
